@@ -1,5 +1,6 @@
 import ClientPage from "./ClientPage"
 import type { Metadata } from "next"
+import Script from "next/script"
 
 const schemaOrgData = {
   "@context": "https://schema.org",
@@ -81,8 +82,10 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <script
+      <Script
+        id="schema-org"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgData) }}
       />
       <ClientPage />
