@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 1,
       },
     ],
-    sitemap: "https://trevorahcharters.com/sitemap.xml",
-    host: "https://trevorahcharters.com",
+    sitemap: "https://trevorahcharters.co.uk/sitemap.xml",
+    host: "https://trevorahcharters.co.uk",
   }
 }

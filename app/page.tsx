@@ -4,17 +4,17 @@ import type { Metadata } from "next"
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "TouristInformationCenter"],
-  "@id": "https://trevorahcharters.com/#business",
+  "@id": "https://trevorahcharters.co.uk/#business",
   name: "Trevorah Charters",
   legalName: "Trevorah Charters",
   description:
     "Luxury day yacht charters departing from Poole Quay Boat Haven, Dorset. Explore the Isle of Wight, Jurassic Coast, Bournemouth, Swanage and Old Harry Rocks aboard Mojo, a 62-foot Sunseeker Predator yacht. Up to 10 guests. Professional skipper and crew provided.",
-  url: "https://trevorahcharters.com",
-  logo: "https://trevorahcharters.com/images/trevorah-logo.png",
+  url: "https://trevorahcharters.co.uk",
+  logo: "https://trevorahcharters.co.uk/images/trevorah-logo.png",
   image: [
-    "https://trevorahcharters.com/images/hero/image1.jpg",
-    "https://trevorahcharters.com/images/hero/image2.jpg",
-    "https://trevorahcharters.com/images/hero/image9.jpg",
+    "https://trevorahcharters.co.uk/images/hero/image1.jpg",
+    "https://trevorahcharters.co.uk/images/hero/image2.jpg",
+    "https://trevorahcharters.co.uk/images/hero/image9.jpg",
   ],
   telephone: ["+441202287004", "+447813346993"],
   email: "info@trevorahcharters.com",
@@ -164,15 +164,15 @@ export const metadata: Metadata = {
   creator: "Trevorah Charters",
   publisher: "Trevorah Charters",
   category: "Travel & Tourism",
-  openGraph: {
+    openGraph: {
     title: "Luxury Yacht Charter Poole & Dorset | Trevorah Charters",
     description:
       "Luxury day yacht charters from Poole Quay Boat Haven. Explore the Isle of Wight, Jurassic Coast & Bournemouth aboard Mojo, a 62ft Sunseeker Predator. Up to 10 guests.",
-    url: "https://trevorahcharters.com",
+    url: "https://trevorahcharters.co.uk",
     siteName: "Trevorah Charters",
     images: [
       {
-        url: "https://trevorahcharters.com/images/hero/image1.jpg",
+        url: "https://trevorahcharters.co.uk/images/hero/image1.jpg",
         width: 1200,
         height: 630,
         alt: "Luxury yacht Mojo — 62ft Sunseeker Predator — cruising from Poole towards the Isle of Wight",
@@ -186,12 +186,12 @@ export const metadata: Metadata = {
     title: "Luxury Yacht Charter Poole & Dorset | Trevorah Charters",
     description:
       "Luxury day yacht charters from Poole. Jurassic Coast, Isle of Wight & Bournemouth. 62ft Sunseeker Predator. Up to 10 guests.",
-    images: ["https://trevorahcharters.com/images/hero/image1.jpg"],
+    images: ["https://trevorahcharters.co.uk/images/hero/image1.jpg"],
   },
   alternates: {
-    canonical: "https://trevorahcharters.com",
+    canonical: "https://trevorahcharters.co.uk",
     languages: {
-      "en-GB": "https://trevorahcharters.com",
+      "en-GB": "https://trevorahcharters.co.uk",
     },
   },
   robots: {
