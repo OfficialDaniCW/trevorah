@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trevorahcharters.com"),
+  metadataBase: new URL("https://trevorahcharters.co.uk"),
   verification: {
     google: "google-site-verification-add-your-code-here",
   },
