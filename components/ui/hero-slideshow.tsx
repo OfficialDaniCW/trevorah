@@ -209,7 +209,7 @@ export function HeroSlideshow() {
             duration: prefersReducedMotion ? 0.3 : isMobile ? 1.0 : 1.2,
             ease: "easeInOut",
           }}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full bg-slate-900"
         >
           <Image
             src={heroImages[currentIndex]?.src || "/placeholder.svg"}
