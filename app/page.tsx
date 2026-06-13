@@ -205,9 +205,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  other: {
-    "application/ld+json": JSON.stringify([localBusinessSchema, boatTripSchema, faqSchema]),
-  },
 }
 
 export default function Home() {
