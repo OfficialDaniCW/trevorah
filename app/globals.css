@@ -151,7 +151,12 @@
 }
 
 .luxury-button {
-  @apply relative overflow-hidden transition-all duration-300 bg-transparent border-2 border-gold hover:bg-gold/10 font-medium;
+  @apply relative overflow-hidden transition-all duration-300 bg-transparent border-2 font-medium;
+  border-color: hsl(var(--gold));
+}
+
+.luxury-button:hover {
+  background-color: hsl(var(--gold) / 0.1);
 }
 
 .luxury-button::before {
@@ -170,7 +175,12 @@
 }
 
 .luxury-input {
-  @apply border-b-2 border-gold bg-transparent rounded-none px-0 py-3 focus-visible:ring-0 focus-visible:border-gold-light transition-all duration-300;
+  @apply border-b-2 bg-transparent rounded-none px-0 py-3 focus-visible:ring-0 transition-all duration-300;
+  border-color: hsl(var(--gold));
+}
+
+.luxury-input:focus-visible {
+  border-color: hsl(var(--gold-light));
 }
 
 .luxury-input::placeholder {
@@ -178,11 +188,21 @@
 }
 
 .luxury-select {
-  @apply border-b-2 border-gold bg-transparent rounded-none px-0 py-3 focus-visible:ring-0 focus-visible:border-gold-light transition-all duration-300;
+  @apply border-b-2 bg-transparent rounded-none px-0 py-3 focus-visible:ring-0 transition-all duration-300;
+  border-color: hsl(var(--gold));
+}
+
+.luxury-select:focus-visible {
+  border-color: hsl(var(--gold-light));
 }
 
 .luxury-textarea {
-  @apply border-2 border-gold bg-transparent rounded-sm px-4 py-3 focus-visible:ring-0 focus-visible:border-gold-light transition-all duration-300 resize-none;
+  @apply border-2 bg-transparent rounded-sm px-4 py-3 focus-visible:ring-0 transition-all duration-300 resize-none;
+  border-color: hsl(var(--gold));
+}
+
+.luxury-textarea:focus-visible {
+  border-color: hsl(var(--gold-light));
 }
 
 .luxury-textarea::placeholder {
