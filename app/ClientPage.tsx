@@ -145,7 +145,7 @@ export default function ClientPage() {
           <nav className="hidden md:flex gap-6 lg:gap-8" aria-label="Main Navigation">
             <Link
               href="#about"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "about")}
             >
               About
@@ -352,7 +352,7 @@ export default function ClientPage() {
               >
                 Tailored Experiences for Every Occasion
               </h2>
-              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base font-light">
                 Choose from our curated selection of day yacht charter packages or contact us for a bespoke experience
                 tailored to your specific requirements. All charters depart from Poole Quay at 10am and return by 6pm.
               </p>
@@ -582,7 +582,7 @@ export default function ClientPage() {
               >
                 Discover Breathtaking Destinations
               </h2>
-              <p className="mt-8 md:mt-12 text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-muted-foreground leading-relaxed text-sm md:text-base font-light">
                 Our luxury yacht charters allow you to experience the most stunning locations along the South Coast,
                 from Poole Harbour to the Isle of Wight and the majestic Jurassic Coast.
               </p>
@@ -675,7 +675,7 @@ export default function ClientPage() {
               >
                 Experiences Along the South Coast
               </h2>
-              <p className="text-center mt-5 text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p className="text-center mt-5 text-muted-foreground leading-relaxed text-sm md:text-base font-light">
                 Discover how Trevorah Charters has created unforgettable memories for guests exploring the stunning
                 coastline and beyond.
               </p>
@@ -704,7 +704,7 @@ export default function ClientPage() {
               >
                 Enquire About Your Luxury Yacht Charter
               </h2>
-              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base font-light">
                 Contact us today to discuss your bespoke yacht charter requirements and let us create an unforgettable
                 experience for you on the waters of Poole and beyond.
               </p>
@@ -985,10 +985,11 @@ export default function ClientPage() {
             </div>
             <div className="space-y-3">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-                <a
-                  href="tel:+441202287004"
-                  className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
-                >
+            <a
+              href="#contact"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-2"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
+            >
                   Office: 01202 287004
                 </a>
                 <a
