@@ -192,7 +192,7 @@ export default function ClientPage() {
         </div>
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md supports-[backdrop-filter]:bg-background/95 border-b border-gold/30 py-6 z-50 shadow-lg">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-gold/30 py-6 z-50 shadow-lg">
             <nav className="container flex flex-col gap-4 px-4" aria-label="Mobile Navigation">
               <Link
                 href="#about"
