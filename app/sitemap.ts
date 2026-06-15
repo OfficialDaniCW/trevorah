@@ -4,42 +4,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://trevorahcharters.co.uk"
   const lastModified = new Date()
 
+  // This is a single-page site, so the sitemap contains only the homepage.
+  // Anchor/fragment URLs (e.g. /#about) must never be listed in a sitemap:
+  // Google strips the fragment, treats them as duplicates of "/", and reports
+  // them as "Page with redirect" / "Crawled - currently not indexed".
   return [
     {
       url: baseUrl,
       lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#charters`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#destinations`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#testimonials`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
     },
   ]
 }
