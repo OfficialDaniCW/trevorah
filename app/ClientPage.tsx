@@ -125,9 +125,10 @@ export default function ClientPage() {
         className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
       >
         <div className="container flex h-full items-center justify-between px-4">
+          {/* Logo - left side */}
           <Link
             href="/"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 flex-shrink-0"
             aria-label="Trevorah Charters - Luxury Yacht Charters in Poole"
           >
             <div className="relative h-8 w-16 md:h-10 md:w-20">
@@ -140,9 +141,11 @@ export default function ClientPage() {
                 className="object-contain"
               />
             </div>
-            <span className="text-lg md:text-xl font-playfair font-medium tracking-wider">Trevorah Charters</span>
+            <span className="text-lg md:text-xl font-playfair font-medium tracking-wider hidden sm:inline">Trevorah Charters</span>
           </Link>
-          <nav className="hidden md:flex gap-6 lg:gap-8" aria-label="Main Navigation">
+
+          {/* Desktop Navigation - centered */}
+          <nav className="hidden lg:flex flex-1 justify-center gap-8" aria-label="Main Navigation">
             <Link
               href="#about"
               className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
@@ -152,36 +155,38 @@ export default function ClientPage() {
             </Link>
             <Link
               href="#packages"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "packages")}
             >
               Packages
             </Link>
             <Link
               href="#testimonials"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "testimonials")}
             >
               Testimonials
             </Link>
             <Link
               href="#contact"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
             >
               Contact
             </Link>
           </nav>
-          <div className="flex items-center gap-2">
+
+          {/* Right side - Call Now button and mobile menu toggle */}
+          <div className="flex items-center gap-3 md:gap-4">
             <Button
-              className="luxury-button text-gold border-gold hover:text-gold-light text-sm md:text-base hidden md:flex"
+              className="luxury-button text-gold border-gold hover:text-gold-light text-sm px-4 md:px-6 hidden md:flex"
               variant="outline"
               asChild
             >
               <a href="tel:+441202287004">Call Now</a>
             </Button>
             <button
-              className="md:hidden text-gold p-2"
+              className="lg:hidden text-gold p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -190,40 +195,53 @@ export default function ClientPage() {
             </button>
           </div>
         </div>
-        {/* Mobile menu */}
+
+        {/* Mobile and Tablet Navigation - full width dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-gold/30 py-6 z-50 shadow-lg">
-            <nav className="container flex flex-col gap-4 px-4" aria-label="Mobile Navigation">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-gold/30 py-6 z-50 shadow-xl">
+            <nav className="container flex flex-col gap-1 px-4" aria-label="Mobile Navigation">
               <Link
                 href="#about"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "about")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "about")
+                  setIsMenuOpen(false)
+                }}
               >
                 About
               </Link>
               <Link
                 href="#packages"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "packages")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "packages")
+                  setIsMenuOpen(false)
+                }}
               >
                 Packages
               </Link>
               <Link
                 href="#testimonials"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "testimonials")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "testimonials")
+                  setIsMenuOpen(false)
+                }}
               >
                 Testimonials
               </Link>
               <Link
                 href="#contact"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "contact")
+                  setIsMenuOpen(false)
+                }}
               >
                 Contact
               </Link>
               <Button
-                className="luxury-button text-gold border-gold hover:text-gold-light text-sm w-full mt-2"
+                className="luxury-button text-gold border-gold hover:text-gold-light text-sm w-full mt-4"
                 variant="outline"
                 asChild
               >
