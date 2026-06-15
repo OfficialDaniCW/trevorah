@@ -125,9 +125,10 @@ export default function ClientPage() {
         className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
       >
         <div className="container flex h-full items-center justify-between px-4">
+          {/* Logo - left side */}
           <Link
             href="/"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 flex-shrink-0"
             aria-label="Trevorah Charters - Luxury Yacht Charters in Poole"
           >
             <div className="relative h-8 w-16 md:h-10 md:w-20">
@@ -140,48 +141,52 @@ export default function ClientPage() {
                 className="object-contain"
               />
             </div>
-            <span className="text-lg md:text-xl font-playfair font-medium tracking-wider">Trevorah Charters</span>
+            <span className="text-lg md:text-xl font-playfair font-medium tracking-wider hidden sm:inline">Trevorah Charters</span>
           </Link>
-          <nav className="hidden md:flex gap-6 lg:gap-8" aria-label="Main Navigation">
+
+          {/* Desktop Navigation - centered */}
+          <nav className="hidden lg:flex flex-1 justify-center gap-8" aria-label="Main Navigation">
             <Link
               href="#about"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "about")}
             >
               About
             </Link>
             <Link
               href="#packages"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "packages")}
             >
               Packages
             </Link>
             <Link
               href="#testimonials"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "testimonials")}
             >
               Testimonials
             </Link>
             <Link
               href="#contact"
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
             >
               Contact
             </Link>
           </nav>
-          <div className="flex items-center gap-2">
+
+          {/* Right side - Call Now button and mobile menu toggle */}
+          <div className="flex items-center gap-3 md:gap-4">
             <Button
-              className="luxury-button text-gold border-gold hover:text-gold-light text-sm md:text-base hidden md:flex"
+              className="luxury-button text-gold border-gold hover:text-gold-light text-sm px-4 md:px-6 hidden md:flex"
               variant="outline"
               asChild
             >
               <a href="tel:+441202287004">Call Now</a>
             </Button>
             <button
-              className="md:hidden text-gold p-2"
+              className="lg:hidden text-gold p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -190,40 +195,53 @@ export default function ClientPage() {
             </button>
           </div>
         </div>
-        {/* Mobile menu */}
+
+        {/* Mobile and Tablet Navigation - full width dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-gold/30 py-6 z-50 shadow-lg">
-            <nav className="container flex flex-col gap-4 px-4" aria-label="Mobile Navigation">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-gold/30 py-6 z-50 shadow-xl">
+            <nav className="container flex flex-col gap-1 px-4" aria-label="Mobile Navigation">
               <Link
                 href="#about"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "about")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "about")
+                  setIsMenuOpen(false)
+                }}
               >
                 About
               </Link>
               <Link
                 href="#packages"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "packages")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "packages")
+                  setIsMenuOpen(false)
+                }}
               >
                 Packages
               </Link>
               <Link
                 href="#testimonials"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "testimonials")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "testimonials")
+                  setIsMenuOpen(false)
+                }}
               >
                 Testimonials
               </Link>
               <Link
                 href="#contact"
-                className="text-sm uppercase tracking-widest hover:text-gold transition-colors duration-300 py-2"
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
+                className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-3 px-4 rounded-sm hover:bg-white/5"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  scrollToSection(e, "contact")
+                  setIsMenuOpen(false)
+                }}
               >
                 Contact
               </Link>
               <Button
-                className="luxury-button text-gold border-gold hover:text-gold-light text-sm w-full mt-2"
+                className="luxury-button text-gold border-gold hover:text-gold-light text-sm w-full mt-4"
                 variant="outline"
                 asChild
               >
@@ -352,7 +370,7 @@ export default function ClientPage() {
               >
                 Tailored Experiences for Every Occasion
               </h2>
-              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base font-light">
                 Choose from our curated selection of day yacht charter packages or contact us for a bespoke experience
                 tailored to your specific requirements. All charters depart from Poole Quay at 10am and return by 6pm.
               </p>
@@ -582,7 +600,7 @@ export default function ClientPage() {
               >
                 Discover Breathtaking Destinations
               </h2>
-              <p className="mt-8 md:mt-12 text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-muted-foreground leading-relaxed text-sm md:text-base font-light">
                 Our luxury yacht charters allow you to experience the most stunning locations along the South Coast,
                 from Poole Harbour to the Isle of Wight and the majestic Jurassic Coast.
               </p>
@@ -675,7 +693,7 @@ export default function ClientPage() {
               >
                 Experiences Along the South Coast
               </h2>
-              <p className="text-center mt-5 text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p className="text-center mt-5 text-muted-foreground leading-relaxed text-sm md:text-base font-light">
                 Discover how Trevorah Charters has created unforgettable memories for guests exploring the stunning
                 coastline and beyond.
               </p>
@@ -704,7 +722,7 @@ export default function ClientPage() {
               >
                 Enquire About Your Luxury Yacht Charter
               </h2>
-              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base">
+              <p className="mt-8 md:mt-12 text-white/80 leading-relaxed text-sm md:text-base font-light">
                 Contact us today to discuss your bespoke yacht charter requirements and let us create an unforgettable
                 experience for you on the waters of Poole and beyond.
               </p>
@@ -985,10 +1003,11 @@ export default function ClientPage() {
             </div>
             <div className="space-y-3">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-                <a
-                  href="tel:+441202287004"
-                  className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
-                >
+            <a
+              href="#contact"
+              className="text-sm uppercase tracking-widest font-medium hover:text-gold transition-colors duration-300 py-2"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => scrollToSection(e, "contact")}
+            >
                   Office: 01202 287004
                 </a>
                 <a
