@@ -304,7 +304,7 @@ export default function ClientPage() {
                   </h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  Mojo is a beautifully maintained Sunseeker Predator 62 — one of Britain's finest performance yachts — built by the renowned Sunseeker shipyard in Poole. Her sleek lines and powerful twin MAN 1100 CRM engines deliver speeds of up to 68 km/h, getting you to the Isle of Wight or along the Jurassic Coast quickly and in effortless style.
+                  Mojo is a beautifully maintained Sunseeker Predator 62, one of Britain's finest performance yachts, built by the renowned Sunseeker shipyard in Poole. Her sleek lines and powerful twin MAN 1100 CRM engines deliver speeds of up to 68 km/h, getting you to the Isle of Wight or along the Jurassic Coast quickly and in effortless style.
                 </p>
                 <div className="grid gap-4 md:gap-5 sm:grid-cols-2">
                   <div className="flex items-center gap-3">
@@ -325,7 +325,7 @@ export default function ClientPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">Day charters (10am–6pm)</span>
+                    <span className="font-light text-sm md:text-base">Day charters (10am to 6pm)</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
