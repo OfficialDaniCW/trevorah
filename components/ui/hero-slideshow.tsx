@@ -61,18 +61,22 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function HeroSlideshow() {
+  // Use allHeroImages directly on first render (same as server) — shuffle after mount
   const [heroImages, setHeroImages] = useState(allHeroImages)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // mounted gates all client-only conditional renders so they match the server's false defaults
+  const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
 
-  // Shuffle images on component mount
+  // Mark as mounted and shuffle images — runs only on client, after hydration
   useEffect(() => {
+    setMounted(true)
     setHeroImages(shuffleArray(allHeroImages))
   }, [])
 
@@ -187,6 +191,40 @@ export function HeroSlideshow() {
       setIsPaused(false)
     }
   }, [isMobile])
+
+  // Render a static placeholder during SSR / before hydration completes.
+  // This ensures server HTML exactly matches the initial client render,
+  // eliminating all "Text content does not match server-rendered HTML" errors.
+  if (!mounted) {
+    return (
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full bg-slate-900">
+          <Image
+            src={allHeroImages[0].src}
+            alt={allHeroImages[0].alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={90}
+          />
+        </div>
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {allHeroImages.map((_, index) => (
+            <div
+              key={index}
+              className={`rounded-full transition-all duration-300 ${
+                index === 0
+                  ? "bg-gold w-6 md:w-8 h-3 md:h-2"
+                  : "bg-white/50 w-3 md:w-2 h-3 md:h-2"
+              }`}
+              style={{ minWidth: "8px", minHeight: "8px" }}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div

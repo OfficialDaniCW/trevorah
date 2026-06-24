@@ -26,9 +26,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://trevorahcharters.co.uk"),
   verification: {
-    google: "google-site-verification-add-your-code-here",
+    google: "YWS5x_kx2QxjN2m88j_Zx2DqAGVO4r8UdBz_jbCS6i4",
   },
-    generator: 'v0.app'
+  generator: "v0.app"
 }
 
 export default function RootLayout({
@@ -40,6 +40,7 @@ export default function RootLayout({
     <html lang="en-GB" className={`${playfair.variable} ${montserrat.variable} bg-background`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="geo.region" content="GB-DOR" />

@@ -18,69 +18,108 @@ import { ResponsiveVideo } from "@/components/ui/responsive-video"
 const testimonials = [
   {
     text: "Our day charter to the Isle of Wight was absolutely magical. Lunch at The Hut was incredible and the crew was professional and attentive. Perfect for our anniversary celebration!",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/sarah-james.png",
     name: "Sarah & James Mitchell",
-    location: "Poole, Dorset",
+    location: "Anniversary Charter",
   },
   {
     text: "Trevorah Charters made our corporate day out unforgettable. Cruising from Poole to the Isle of Wight impressed all our clients. Exceptional service throughout the day.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/david.png",
     name: "David Thompson",
     location: "Corporate Charter",
   },
   {
     text: "The day charter exploring Old Harry Rocks was incredible! We enjoyed a delicious lunch onboard while taking in the stunning Jurassic Coast views. Highly recommend for special occasions.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/michael.png",
     name: "Michael Roberts",
-    location: "Swanage, Dorset",
+    location: "Jurassic Coast Charter",
   },
   {
     text: "Our day exploring from Poole to the Isle of Wight was perfect. The dramatic cliffs and hidden coves along the way were breathtaking. The crew's local knowledge was invaluable.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/emma.png",
     name: "Emma & Tom Wilson",
     location: "Isle of Wight Charter",
   },
   {
     text: "The day charter from Poole along the Jurassic Coast exceeded expectations. Perfect for our family reunion with stunning views of Old Harry Rocks and the Purbeck coastline.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/jennifer.png",
     name: "Jennifer Clarke",
-    location: "Bournemouth, Dorset",
+    location: "Family Reunion Charter",
   },
   {
     text: "Our corporate team building day was fantastic. The professional crew and catering were perfect for impressing our international clients. The La Lupa dinner afterwards was the perfect end.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/richard.png",
     name: "Richard Palmer",
     location: "Corporate Charter with La Lupa Dinner",
   },
   {
     text: "The wildlife watching cruise from Poole Harbour was extraordinary. We saw seals around Brownsea Island and dolphins along the Jurassic Coast. The crew's expertise made it educational and fun.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/helen.png",
     name: "Helen & Mark Davis",
-    location: "Poole Harbour, Dorset",
+    location: "Poole Harbour Charter",
   },
   {
     text: "The champagne cruise to The Hut on the Isle of Wight was the highlight of our holiday. Exploring the coast in such luxury was unforgettable. Five-star service throughout!",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/caroline.png",
     name: "Caroline Foster",
     location: "Isle of Wight, The Hut",
   },
   {
     text: "Our special charter from Poole to the Isle of Wight followed by dinner at La Lupa was absolutely magical. The combination of sea and fine dining was worth every moment. Truly a once-in-a-lifetime experience.",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/avatars/andrew.png",
     name: "Andrew & Lucy Stevens",
     location: "Isle of Wight with La Lupa Dinner",
   },
+  {
+    text: "Eight of us booked Mojo for a friends weekend down from London. The crew looked after us brilliantly all day, the boat is stunning, and the Jurassic Coast views were genuinely jaw-dropping. Already planning our return.",
+    image: "/images/avatars/friends-group.png",
+    name: "The Hartley Group",
+    location: "Friends Day Charter",
+  },
+  {
+    text: "I treated myself to a solo charter for my 40th birthday and it was the best decision I have ever made. Having the whole boat to myself felt incredibly special. The skipper made sure every detail was perfect.",
+    image: "/images/avatars/james-solo.png",
+    name: "James Alderton",
+    location: "Solo Birthday Charter",
+  },
+  {
+    text: "We hired Mojo for my hen do and it was absolutely perfect. Champagne on the sun deck, beautiful scenery, and the crew could not have been more accommodating. Every single one of us had the best day.",
+    image: "/images/avatars/hen-party.png",
+    name: "Olivia & the Girls",
+    location: "Hen Party Charter",
+  },
+  {
+    text: "We use Trevorah Charters regularly for client hospitality events and they never let us down. The presentation of the yacht, the professionalism of the crew, and the overall experience is consistently outstanding.",
+    image: "/images/avatars/events-company.png",
+    name: "Sophie Marchetti",
+    location: "Marchetti Events Ltd",
+  },
+  {
+    text: "Dad's 70th birthday on board Mojo was something the whole family will remember forever. Three generations out on the water together, brilliant food, and a crew that genuinely went above and beyond.",
+    image: "/images/avatars/birthday-party.png",
+    name: "The Brennan Family",
+    location: "Birthday Celebration Charter",
+  },
+  {
+    text: "I booked a last-minute solo trip along the Jurassic Coast and was made to feel completely at ease from the first call. The boat is gorgeous, the crew are brilliant, and the scenery left me speechless.",
+    image: "/images/avatars/rachel-solo.png",
+    name: "Rachel Simmons",
+    location: "Solo Coastal Charter",
+  },
 ]
 
-const firstColumn = testimonials.slice(0, 3)
-const secondColumn = testimonials.slice(3, 6)
-const thirdColumn = testimonials.slice(6, 9)
+const firstColumn = testimonials.slice(0, 4)
+const secondColumn = testimonials.slice(4, 8)
+const thirdColumn = testimonials.slice(8, 12)
+const fourthColumn = testimonials.slice(12, 15)
 
 export default function ClientPage() {
+  const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
@@ -122,7 +161,7 @@ export default function ClientPage() {
   return (
     <div className="flex min-h-screen flex-col font-montserrat">
       <header
-        className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
+        className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${mounted && isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
       >
         <div className="container flex h-full items-center justify-between px-4">
           {/* Logo - left side */}
@@ -304,31 +343,36 @@ export default function ClientPage() {
                   </h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  Mojo is a state-of-the-art luxury yacht designed to provide an unparalleled experience on the waters
-                  of Poole Harbour and along the stunning Jurassic Coast. With meticulous attention to detail and a
-                  commitment to excellence, we offer a perfect blend of comfort, style, and performance for your bespoke
-                  sea adventure.
+                  Mojo is a beautifully maintained Sunseeker Predator 62, one of Britain's finest performance yachts, built by the renowned Sunseeker shipyard in Poole. Her sleek lines and powerful twin MAN 1100 CRM engines deliver speeds of up to 68 km/h, getting you to the Isle of Wight or along the Jurassic Coast quickly and in effortless style.
                 </p>
                 <div className="grid gap-4 md:gap-5 sm:grid-cols-2">
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">62-foot Sunseeker Predator yacht</span>
+                    <span className="font-light text-sm md:text-base">62-foot Sunseeker Predator</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">Accommodates up to 10 guests</span>
+                    <span className="font-light text-sm md:text-base">Up to 10 guests</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">Day charters (10am-6pm)</span>
+                    <span className="font-light text-sm md:text-base">Twin MAN 1100 CRM engines</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">Spacious sun deck</span>
+                    <span className="font-light text-sm md:text-base">Top speed up to 68 km/h</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
-                    <span className="font-light text-sm md:text-base">Professional skipper and crew</span>
+                    <span className="font-light text-sm md:text-base">Day charters (10am to 6pm)</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
+                    <span className="font-light text-sm md:text-base">Professional skipper & crew</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
+                    <span className="font-light text-sm md:text-base">Departing Poole Quay Marina</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <ChevronRight className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" aria-hidden="true" />
@@ -344,12 +388,44 @@ export default function ClientPage() {
                   </p>
                 </div>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 flex flex-col gap-4">
                 <ResponsiveVideo
                   src="https://www.dropbox.com/scl/fi/vxtngoljgqdpap6uwzy33/WhatsApp-Video-2025-04-05-at-12.12.02.mp4?rlkey=toqb0wazdvomlzfx7x7xlmnm8&st=x1upeqpw&dl=1"
                   poster="/images/hero/image4.jpg"
                   className="border border-gold/20 shadow-lg"
                 />
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="relative h-24 md:h-28 overflow-hidden rounded-sm border border-gold/20">
+                    <Image
+                      src="/images/mojo/mojo-1.jpg"
+                      alt="Mojo Sunseeker Predator 62 exterior"
+                      fill
+                      loading="lazy"
+                      sizes="33vw"
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="relative h-24 md:h-28 overflow-hidden rounded-sm border border-gold/20">
+                    <Image
+                      src="/images/mojo/mojo-2.jpg"
+                      alt="Mojo yacht deck and interior"
+                      fill
+                      loading="lazy"
+                      sizes="33vw"
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="relative h-24 md:h-28 overflow-hidden rounded-sm border border-gold/20">
+                    <Image
+                      src="/images/mojo/mojo-3.jpg"
+                      alt="Mojo yacht on the water"
+                      fill
+                      loading="lazy"
+                      sizes="33vw"
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -437,10 +513,8 @@ export default function ClientPage() {
                         </li>
                       </ul>
                       <div className="pt-4">
-                        <p className="text-lg md:text-xl font-playfair font-light text-gold">
-                          Bespoke Pricing Available
-                        </p>
-                        <p className="text-xs md:text-sm text-white/70">Contact us for a personalised quote</p>
+                        <p className="text-2xl md:text-3xl font-playfair font-light text-gold">£4,500 <span className="text-base font-montserrat font-light text-white/70">/ day</span></p>
+                        <p className="text-xs md:text-sm text-white/60 mt-1">Full day charter · up to 10 guests · departs Poole Quay Marina</p>
                       </div>
                       <Button
                         className="luxury-button text-gold border-gold hover:text-gold-light mt-4 w-full md:w-auto"
@@ -498,10 +572,8 @@ export default function ClientPage() {
                         </li>
                       </ul>
                       <div className="pt-4">
-                        <p className="text-lg md:text-xl font-playfair font-light text-gold">
-                          Bespoke Pricing Available
-                        </p>
-                        <p className="text-xs md:text-sm text-white/70">Contact us for a personalised quote</p>
+                        <p className="text-2xl md:text-3xl font-playfair font-light text-gold">£4,500 <span className="text-base font-montserrat font-light text-white/70">/ day</span></p>
+                        <p className="text-xs md:text-sm text-white/60 mt-1">Full day charter · up to 10 guests · departs Poole Quay Marina</p>
                       </div>
                       <Button
                         className="luxury-button text-gold border-gold hover:text-gold-light mt-4 w-full md:w-auto"
@@ -561,12 +633,8 @@ export default function ClientPage() {
                         </li>
                       </ul>
                       <div className="pt-4">
-                        <p className="text-lg md:text-xl font-playfair font-light text-gold">
-                          Tailored to Your Requirements
-                        </p>
-                        <p className="text-xs md:text-sm text-white/70">
-                          Contact us to discuss your perfect experience
-                        </p>
+                        <p className="text-2xl md:text-3xl font-playfair font-light text-gold">£4,500 <span className="text-base font-montserrat font-light text-white/70">/ day</span></p>
+                        <p className="text-xs md:text-sm text-white/60 mt-1">Charter + La Lupa dining · restaurant cost additional · contact us to arrange</p>
                       </div>
                       <Button
                         className="luxury-button text-gold border-gold hover:text-gold-light mt-4 w-full md:w-auto"
@@ -700,9 +768,10 @@ export default function ClientPage() {
             </motion.div>
 
             <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-              <TestimonialsColumn testimonials={firstColumn} duration={15} />
-              <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-              <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                <TestimonialsColumn testimonials={firstColumn} duration={15} />
+                <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+                <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                <TestimonialsColumn testimonials={fourthColumn} className="hidden xl:block" duration={21} />
             </div>
           </div>
         </section>

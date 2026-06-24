@@ -1,5 +1,7 @@
-import ClientPage from "./ClientPage"
+import dynamic from "next/dynamic"
 import type { Metadata } from "next"
+
+const ClientPage = dynamic(() => import("./ClientPage"), { ssr: false })
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -83,7 +85,7 @@ const boatTripSchema = {
     priceSpecification: {
       "@type": "PriceSpecification",
       priceCurrency: "GBP",
-      description: "Bespoke pricing — contact for a personalised quote",
+      description: "Bespoke pricing. Contact for a personalised quote",
     },
     seller: {
       "@type": "Organization",
@@ -95,7 +97,7 @@ const boatTripSchema = {
     { "@type": "PropertyValue", name: "Maximum Guests", value: "10" },
     { "@type": "PropertyValue", name: "Crew", value: "Professional skipper and deckhand/stewardess" },
     { "@type": "PropertyValue", name: "Departure Point", value: "Poole Quay Boat Haven, Dorset BH15 1HJ" },
-    { "@type": "PropertyValue", name: "Charter Type", value: "Day charter only — 10:00 to 18:00" },
+    { "@type": "PropertyValue", name: "Charter Type", value: "Day charter only, 10:00 to 18:00" },
   ],
 }
 
@@ -154,10 +156,31 @@ const faqSchema = {
   ],
 }
 
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Mojo Luxury Yacht Charter — Trevorah Charters, Poole",
+  description:
+    "Onboard footage of Mojo, a 62-foot Sunseeker Predator yacht, departing Poole Quay Boat Haven on a luxury day charter along the Dorset coast.",
+  thumbnailUrl: "https://trevorahcharters.co.uk/images/hero/image4.jpg",
+  uploadDate: "2025-04-05",
+  duration: "PT1M",
+  contentUrl:
+    "https://www.dropbox.com/scl/fi/vxtngoljgqdpap6uwzy33/WhatsApp-Video-2025-04-05-at-12.12.02.mp4?rlkey=toqb0wazdvomlzfx7x7xlmnm8&st=x1upeqpw&dl=1",
+  publisher: {
+    "@type": "Organization",
+    name: "Trevorah Charters",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://trevorahcharters.co.uk/images/trevorah-logo.png",
+    },
+  },
+}
+
 export const metadata: Metadata = {
   title: "Luxury Yacht Charter Poole & Dorset | Trevorah Charters | Mojo Sunseeker",
   description:
-    "Luxury day yacht charters from Poole, Dorset. Explore the Isle of Wight, Jurassic Coast & Bournemouth aboard Mojo — a 62ft Sunseeker Predator. Up to 10 guests. Skipper & crew provided. Book with Trevorah Charters today.",
+    "Luxury day yacht charters from Poole, Dorset. Explore the Isle of Wight, Jurassic Coast & Bournemouth aboard Mojo, a 62ft Sunseeker Predator. Up to 10 guests. Skipper & crew provided. Book with Trevorah Charters today.",
   keywords:
     "luxury yacht charter Poole, boat hire Dorset, yacht charter Jurassic Coast, Isle of Wight boat trip Poole, Sunseeker charter Dorset, Trevorah Charters, Mojo yacht Poole, bespoke day charter Dorset, corporate yacht hire Poole, luxury sea charter Bournemouth, Swanage boat charter, Old Harry Rocks boat trip, Poole Harbour yacht, Poole Quay charter",
   authors: [{ name: "Trevorah Charters" }],
@@ -175,7 +198,7 @@ export const metadata: Metadata = {
         url: "https://trevorahcharters.co.uk/images/hero/image1.jpg",
         width: 1200,
         height: 630,
-        alt: "Luxury yacht Mojo — 62ft Sunseeker Predator — cruising from Poole towards the Isle of Wight",
+        alt: "Luxury yacht Mojo, a 62ft Sunseeker Predator, cruising from Poole towards the Isle of Wight",
       },
     ],
     locale: "en_GB",
@@ -208,5 +231,25 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  return <ClientPage />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(boatTripSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+      <ClientPage />
+    </>
+  )
 }

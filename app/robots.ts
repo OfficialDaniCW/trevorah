@@ -11,12 +11,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Googlebot",
         allow: "/",
-        crawlDelay: 0,
+        disallow: ["/_next/", "/api/"],
       },
       {
         userAgent: "Bingbot",
         allow: "/",
-        crawlDelay: 1,
+        disallow: ["/_next/", "/api/"],
       },
     ],
     sitemap: "https://trevorahcharters.co.uk/sitemap.xml",
