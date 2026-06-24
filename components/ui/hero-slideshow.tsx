@@ -61,18 +61,22 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function HeroSlideshow() {
+  // Use allHeroImages directly on first render (same as server) — shuffle after mount
   const [heroImages, setHeroImages] = useState(allHeroImages)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // mounted gates all client-only conditional renders so they match the server's false defaults
+  const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartX = useRef<number>(0)
   const touchEndX = useRef<number>(0)
 
-  // Shuffle images on component mount
+  // Mark as mounted and shuffle images — runs only on client, after hydration
   useEffect(() => {
+    setMounted(true)
     setHeroImages(shuffleArray(allHeroImages))
   }, [])
 
@@ -206,7 +210,7 @@ export function HeroSlideshow() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{
-            duration: prefersReducedMotion ? 0.3 : isMobile ? 1.0 : 1.2,
+            duration: prefersReducedMotion ? 0.3 : mounted && isMobile ? 1.0 : 1.2,
             ease: "easeInOut",
           }}
           className="absolute inset-0 w-full h-full bg-slate-900"
@@ -218,7 +222,7 @@ export function HeroSlideshow() {
             priority={currentIndex === 0}
             sizes="100vw"
             className="object-cover"
-            quality={isMobile ? 75 : 90}
+            quality={mounted && isMobile ? 75 : 90}
           />
         </motion.div>
       </AnimatePresence>
@@ -238,8 +242,8 @@ export function HeroSlideshow() {
               }
             `}
             style={{
-              minWidth: isMobile ? "12px" : "8px",
-              minHeight: isMobile ? "12px" : "8px",
+              minWidth: mounted && isMobile ? "12px" : "8px",
+              minHeight: mounted && isMobile ? "12px" : "8px",
             }}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -247,7 +251,7 @@ export function HeroSlideshow() {
       </div>
 
       {/* Mobile pause indicator */}
-      {isMobile && isPaused && (
+      {mounted && isMobile && isPaused && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -261,7 +265,7 @@ export function HeroSlideshow() {
       )}
 
       {/* Swipe hint for mobile */}
-      {isMobile && currentIndex === 0 && (
+      {mounted && isMobile && currentIndex === 0 && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
