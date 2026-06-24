@@ -114,10 +114,12 @@ const thirdColumn = testimonials.slice(8, 12)
 const fourthColumn = testimonials.slice(12, 15)
 
 export default function ClientPage() {
+  const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
@@ -159,7 +161,7 @@ export default function ClientPage() {
   return (
     <div className="flex min-h-screen flex-col font-montserrat">
       <header
-        className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
+        className={`sticky top-0 z-50 w-full border-b border-gold/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${mounted && isScrolled ? "h-16 md:h-16" : "h-16 md:h-20"}`}
       >
         <div className="container flex h-full items-center justify-between px-4">
           {/* Logo - left side */}

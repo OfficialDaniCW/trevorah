@@ -192,6 +192,40 @@ export function HeroSlideshow() {
     }
   }, [isMobile])
 
+  // Render a static placeholder during SSR / before hydration completes.
+  // This ensures server HTML exactly matches the initial client render,
+  // eliminating all "Text content does not match server-rendered HTML" errors.
+  if (!mounted) {
+    return (
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full bg-slate-900">
+          <Image
+            src={allHeroImages[0].src}
+            alt={allHeroImages[0].alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={90}
+          />
+        </div>
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {allHeroImages.map((_, index) => (
+            <div
+              key={index}
+              className={`rounded-full transition-all duration-300 ${
+                index === 0
+                  ? "bg-gold w-6 md:w-8 h-3 md:h-2"
+                  : "bg-white/50 w-3 md:w-2 h-3 md:h-2"
+              }`}
+              style={{ minWidth: "8px", minHeight: "8px" }}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       ref={containerRef}
@@ -210,7 +244,7 @@ export function HeroSlideshow() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{
-            duration: prefersReducedMotion ? 0.3 : mounted && isMobile ? 1.0 : 1.2,
+            duration: prefersReducedMotion ? 0.3 : isMobile ? 1.0 : 1.2,
             ease: "easeInOut",
           }}
           className="absolute inset-0 w-full h-full bg-slate-900"
@@ -222,7 +256,7 @@ export function HeroSlideshow() {
             priority={currentIndex === 0}
             sizes="100vw"
             className="object-cover"
-            quality={mounted && isMobile ? 75 : 90}
+            quality={isMobile ? 75 : 90}
           />
         </motion.div>
       </AnimatePresence>
@@ -242,8 +276,8 @@ export function HeroSlideshow() {
               }
             `}
             style={{
-              minWidth: mounted && isMobile ? "12px" : "8px",
-              minHeight: mounted && isMobile ? "12px" : "8px",
+              minWidth: isMobile ? "12px" : "8px",
+              minHeight: isMobile ? "12px" : "8px",
             }}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -251,7 +285,7 @@ export function HeroSlideshow() {
       </div>
 
       {/* Mobile pause indicator */}
-      {mounted && isMobile && isPaused && (
+      {isMobile && isPaused && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -265,7 +299,7 @@ export function HeroSlideshow() {
       )}
 
       {/* Swipe hint for mobile */}
-      {mounted && isMobile && currentIndex === 0 && (
+      {isMobile && currentIndex === 0 && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
