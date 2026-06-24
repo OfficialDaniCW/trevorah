@@ -1,5 +1,7 @@
-import ClientPage from "./ClientPage"
+import dynamic from "next/dynamic"
 import type { Metadata } from "next"
+
+const ClientPage = dynamic(() => import("./ClientPage"), { ssr: false })
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
