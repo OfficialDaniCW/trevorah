@@ -25,8 +25,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trevorahcharters.co.uk"),
-  // To verify with Google Search Console, add your code here:
-  // verification: { google: "YOUR_CODE_FROM_GOOGLE_SEARCH_CONSOLE" },
+  verification: {
+    google: "YWS5x_kx2QxjN2m88j_Zx2DqAGVO4r8UdBz_jbCS6i4",
+  },
   generator: "v0.app"
 }
 
