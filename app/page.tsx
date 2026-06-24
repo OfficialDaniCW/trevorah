@@ -154,6 +154,27 @@ const faqSchema = {
   ],
 }
 
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Mojo Luxury Yacht Charter — Trevorah Charters, Poole",
+  description:
+    "Onboard footage of Mojo, a 62-foot Sunseeker Predator yacht, departing Poole Quay Boat Haven on a luxury day charter along the Dorset coast.",
+  thumbnailUrl: "https://trevorahcharters.co.uk/images/hero/image4.jpg",
+  uploadDate: "2025-04-05",
+  duration: "PT1M",
+  contentUrl:
+    "https://www.dropbox.com/scl/fi/vxtngoljgqdpap6uwzy33/WhatsApp-Video-2025-04-05-at-12.12.02.mp4?rlkey=toqb0wazdvomlzfx7x7xlmnm8&st=x1upeqpw&dl=1",
+  publisher: {
+    "@type": "Organization",
+    name: "Trevorah Charters",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://trevorahcharters.co.uk/images/trevorah-logo.png",
+    },
+  },
+}
+
 export const metadata: Metadata = {
   title: "Luxury Yacht Charter Poole & Dorset | Trevorah Charters | Mojo Sunseeker",
   description:
@@ -208,5 +229,25 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  return <ClientPage />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(boatTripSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+      <ClientPage />
+    </>
+  )
 }
