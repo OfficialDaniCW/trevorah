@@ -20,7 +20,7 @@ const testimonials = [
     text: "Our day charter to the Isle of Wight was absolutely magical. Lunch at The Hut was incredible and the crew was professional and attentive. Perfect for our anniversary celebration!",
     image: "/images/avatars/sarah-james.png",
     name: "Sarah & James Mitchell",
-    location: "Poole, Dorset",
+    location: "Anniversary Charter",
   },
   {
     text: "Trevorah Charters made our corporate day out unforgettable. Cruising from Poole to the Isle of Wight impressed all our clients. Exceptional service throughout the day.",
@@ -32,7 +32,7 @@ const testimonials = [
     text: "The day charter exploring Old Harry Rocks was incredible! We enjoyed a delicious lunch onboard while taking in the stunning Jurassic Coast views. Highly recommend for special occasions.",
     image: "/images/avatars/michael.png",
     name: "Michael Roberts",
-    location: "Swanage, Dorset",
+    location: "Jurassic Coast Charter",
   },
   {
     text: "Our day exploring from Poole to the Isle of Wight was perfect. The dramatic cliffs and hidden coves along the way were breathtaking. The crew's local knowledge was invaluable.",
@@ -44,7 +44,7 @@ const testimonials = [
     text: "The day charter from Poole along the Jurassic Coast exceeded expectations. Perfect for our family reunion with stunning views of Old Harry Rocks and the Purbeck coastline.",
     image: "/images/avatars/jennifer.png",
     name: "Jennifer Clarke",
-    location: "Bournemouth, Dorset",
+    location: "Family Reunion Charter",
   },
   {
     text: "Our corporate team building day was fantastic. The professional crew and catering were perfect for impressing our international clients. The La Lupa dinner afterwards was the perfect end.",
@@ -56,7 +56,7 @@ const testimonials = [
     text: "The wildlife watching cruise from Poole Harbour was extraordinary. We saw seals around Brownsea Island and dolphins along the Jurassic Coast. The crew's expertise made it educational and fun.",
     image: "/images/avatars/helen.png",
     name: "Helen & Mark Davis",
-    location: "Poole Harbour, Dorset",
+    location: "Poole Harbour Charter",
   },
   {
     text: "The champagne cruise to The Hut on the Isle of Wight was the highlight of our holiday. Exploring the coast in such luxury was unforgettable. Five-star service throughout!",
@@ -70,11 +70,48 @@ const testimonials = [
     name: "Andrew & Lucy Stevens",
     location: "Isle of Wight with La Lupa Dinner",
   },
+  {
+    text: "Eight of us booked Mojo for a friends weekend down from London. The crew looked after us brilliantly all day, the boat is stunning, and the Jurassic Coast views were genuinely jaw-dropping. Already planning our return.",
+    image: "/images/avatars/friends-group.png",
+    name: "The Hartley Group",
+    location: "Friends Day Charter",
+  },
+  {
+    text: "I treated myself to a solo charter for my 40th birthday and it was the best decision I have ever made. Having the whole boat to myself felt incredibly special. The skipper made sure every detail was perfect.",
+    image: "/images/avatars/james-solo.png",
+    name: "James Alderton",
+    location: "Solo Birthday Charter",
+  },
+  {
+    text: "We hired Mojo for my hen do and it was absolutely perfect. Champagne on the sun deck, beautiful scenery, and the crew could not have been more accommodating. Every single one of us had the best day.",
+    image: "/images/avatars/hen-party.png",
+    name: "Olivia & the Girls",
+    location: "Hen Party Charter",
+  },
+  {
+    text: "We use Trevorah Charters regularly for client hospitality events and they never let us down. The presentation of the yacht, the professionalism of the crew, and the overall experience is consistently outstanding.",
+    image: "/images/avatars/events-company.png",
+    name: "Sophie Marchetti",
+    location: "Marchetti Events Ltd",
+  },
+  {
+    text: "Dad's 70th birthday on board Mojo was something the whole family will remember forever. Three generations out on the water together, brilliant food, and a crew that genuinely went above and beyond.",
+    image: "/images/avatars/birthday-party.png",
+    name: "The Brennan Family",
+    location: "Birthday Celebration Charter",
+  },
+  {
+    text: "I booked a last-minute solo trip along the Jurassic Coast and was made to feel completely at ease from the first call. The boat is gorgeous, the crew are brilliant, and the scenery left me speechless.",
+    image: "/images/avatars/rachel-solo.png",
+    name: "Rachel Simmons",
+    location: "Solo Coastal Charter",
+  },
 ]
 
-const firstColumn = testimonials.slice(0, 3)
-const secondColumn = testimonials.slice(3, 6)
-const thirdColumn = testimonials.slice(6, 9)
+const firstColumn = testimonials.slice(0, 4)
+const secondColumn = testimonials.slice(4, 8)
+const thirdColumn = testimonials.slice(8, 12)
+const fourthColumn = testimonials.slice(12, 15)
 
 export default function ClientPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -729,9 +766,10 @@ export default function ClientPage() {
             </motion.div>
 
             <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-              <TestimonialsColumn testimonials={firstColumn} duration={15} />
-              <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-              <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                <TestimonialsColumn testimonials={firstColumn} duration={15} />
+                <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+                <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+                <TestimonialsColumn testimonials={fourthColumn} className="hidden xl:block" duration={21} />
             </div>
           </div>
         </section>

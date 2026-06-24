@@ -25,10 +25,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trevorahcharters.co.uk"),
-  verification: {
-    google: "google-site-verification-add-your-code-here",
-  },
-    generator: 'v0.app'
+  // To verify with Google Search Console, add your code here:
+  // verification: { google: "YOUR_CODE_FROM_GOOGLE_SEARCH_CONSOLE" },
+  generator: "v0.app"
 }
 
 export default function RootLayout({
